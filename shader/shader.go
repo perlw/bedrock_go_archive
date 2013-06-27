@@ -1,8 +1,8 @@
 package shader
 
 import (
-	"dwelling/math/matrix"
-	"dwelling/math/vector"
+	"bedrock/math/matrix"
+	"bedrock/math/vector"
 	"errors"
 	"fmt"
 	gl "github.com/chsc/gogl/gl33"
