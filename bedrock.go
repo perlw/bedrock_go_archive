@@ -6,6 +6,9 @@ import (
 	"github.com/jteeuwen/glfw"
 )
 
+var ScreenWidth int
+var ScreenHeight int
+
 func Init() error {
 	if err := glfw.Init(); err != nil {
 		return errors.New("bedrock-init: Could not initialize glfw, said: " + err.Error())
@@ -15,7 +18,10 @@ func Init() error {
 	glfw.OpenWindowHint(glfw.OpenGLVersionMinor, 0)
 	glfw.OpenWindowHint(glfw.WindowNoResize, 1)
 
-	if err := glfw.OpenWindow(640, 480, 8, 8, 8, 8, 16, 0, glfw.Windowed); err != nil {
+	ScreenWidth = 1280
+	ScreenHeight = 720
+
+	if err := glfw.OpenWindow(ScreenWidth, ScreenHeight, 8, 8, 8, 8, 16, 0, glfw.Windowed); err != nil {
 		return errors.New("bedrock-init: Failed to open window, said: " + err.Error())
 	}
 
@@ -31,7 +37,7 @@ func Init() error {
 	gl.ClearColor(0.5, 0.5, 0.5, 1.0)
 	gl.ClearDepth(1)
 	gl.DepthFunc(gl.LEQUAL)
-	gl.Viewport(0, 0, 640, 480)
+	gl.Viewport(0, 0, gl.Sizei(ScreenWidth), gl.Sizei(ScreenHeight))
 
 	return nil
 }
